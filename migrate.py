@@ -63,7 +63,7 @@ def migrate_table_structure(source_cursor, source_table_name, destino_cursor, ta
 
 
 def migrate_constraints(source_cursor, source_table_name, target_cursor, target_schema, target_table_name, prefix):
-    """Replica las restricciones de la tabla en la base de datos de destino."""
+    """Replica las restricciones, incluyendo las foreign keys de la tabla en la base de datos de destino."""
 
     # Obtenemos las restricciones de la tabla origen
     source_cursor.execute(
@@ -86,7 +86,7 @@ def migrate_constraints(source_cursor, source_table_name, target_cursor, target_
 def migrates_sequences(
     source_cursor, source_schema, source_table_name, target_cursor, target_schema, target_table_name, prefix
 ):
-    """Replica las secuencias de la tabla en la base de datos de destino."""
+    """Replica los secuenciadores de la tabla en la base de datos de destino."""
 
     # Obtenemos la secuencia de la tabla origen
     source_cursor.execute(
