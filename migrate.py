@@ -41,7 +41,7 @@ def migrate_table_structure(source_cursor, source_table_name, target_cursor, tar
     target_cursor.execute(
         f"SELECT EXISTS(SELECT 1 FROM information_schema.tables WHERE table_schema = '{target_schema}' and table_name = '{target_table_name}');"
     )
-    if source_cursor.fetchone()[0]:
+    if target_cursor.fetchone()[0]:
         raise ValueError(f'La tabla {target_table_name} ya existe en la base de datos de destino.')
 
     source_cursor.execute(
